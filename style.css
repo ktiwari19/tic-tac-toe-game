@@ -1,0 +1,89 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.board {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: wheat;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.cell.x::after,
+.cell.x::before {
+  content: "";
+  width: 5px;
+  height: 80px;
+  background-color: black;
+  position: absolute;
+}
+
+.cell.x::before {
+  transform: rotate(45deg);
+}
+.cell.x::after {
+  transform: rotate(-45deg);
+}
+.cell.circle::after,
+.cell.circle::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.cell.circle::before {
+  width: 70px;
+  height: 70px;
+  background-color: black;
+}
+.cell.circle::after {
+  width: 60px;
+  height: 60px;
+  background-color: wheat;
+}
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem;
+  flex-direction: column;
+}
+.winning-message button {
+  font-size: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+.winning-message button:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+.winning-message.show {
+  display: flex;
+}
